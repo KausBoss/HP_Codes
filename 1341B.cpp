@@ -3,7 +3,7 @@
 using namespace std;
 
 #define ll long long
-#define inf 200000
+#define inf 205
 
 int main(){
 	ios_base::sync_with_stdio(false);
@@ -15,36 +15,29 @@ int main(){
 	ll t;
 	cin>>t;
 	while(t--){
-		ll n, k;
-		ll a[inf], peak[inf]={0};
+		ll n, a[inf], k;
+		int freq[inf]={0};
 		cin>>n>>k;
-		for(ll i=0; i<n; i++){
+		for(int i=0;i<n; i++){
 			cin>>a[i];
 		}
-		for(ll i=1; i<n-1; i++){
+		for(int i=1; i<n-1; i++){
 			if(a[i]>a[i-1] && a[i]>a[i+1]){
-				peak[i]=69;
+				freq[i]=1;
 			}
 		}
-		ll mxbr=INT_MIN; 
-		ll id=0, brk=0;
-
-		for(ll i=1; i<=k; i++){
-			if(peak[i]==69){
-				brk++;
-			}
+		for(int i=1; i<n; i++){
+			freq[i]=freq[i]+freq[i-1];
 		}
+		ll parts=freq[k-1], id=0;
 
-		for(ll i=k+1; i<n-1; i++){
-			if(peak[i]==1){
-				brk++;
-			}
-			if(peak[i-k-1]==1){brk--;}
-			if(brk > mxbr){
-				mxbr=brk;
+		for(int i=k+1; i<n; i++){
+			ll cur= freq[i-1] - freq[i-k];
+			if(cur > parts){
+				parts=cur;
 				id=i-k;
-			}
+			} 
 		}
-		cout<<mxbr<<" "<<id<<endl;
+		cout<<parts+1<<" "<<id+1<<endl;
 	}
 }
