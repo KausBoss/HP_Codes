@@ -1,26 +1,29 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 #define ll long long
+
 int main(){
-	int t;
+	ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+	#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+	#endif
+	string t;
 	cin>>t;
-	while(t--){
-		ll n;
-		cin>>n;
-		if(n==1){
-			cout<<1<<"\n"<<1<<" "<<1<<"\n";
-			continue;
+	char s[t.length()];
+	for(int i=0; i<t.length(); i++){
+		s[i]=t[i];
+	}
+	s[t.length() - 1]='\0';
+	char *ptr = strtok(s,"/");
+	while(ptr!=NULL){
+		while(*ptr!='\0'){
+			cout<<*ptr++<<" ";
 		}
-		cout<<n/2<<"\n";
-		for(int i=1; i<n; i=i+2){
-			if(i+2>=n && n%2==1){
-				cout<<3<<" "<<i<<" "<<i+1<<" "<<n<<"\n";
-				break;
-			}
-			cout<<2<<" "<<i<<" "<<i+1<<"\n";
-		}
+		cout<<"|"<<ptr<<"|"<<endl;
+		ptr=strtok(NULL, "/");
 	}
 }

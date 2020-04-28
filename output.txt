@@ -1,5 +1,8 @@
-number: 2, position: 3 , next position: 4
-number: 3, position: 4 , next position: 5
-number: 5, position: 5 , next position: 7
-number: 6, position: 7 , next position: 9044304
-2
+a
+b
+c
+d
+.
+.
+..
+/a/b/c
