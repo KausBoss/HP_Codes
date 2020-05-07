@@ -1,22 +1,14 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-#define ll long long
-
-int findComplement(int num) {
-    int lim=log2(num);
-    for(int i=0; i<=lim; i++){
-        
+class Solution {
+public:
+    int findComplement(int num) {
+        int mask=1;
+        int i=0;
+        int temp=num;
+        while(temp > 0){
+            mask = mask | 1<<i;
+            i++;
+            temp=temp>>1;
+        }
+        return (mask^num);
     }
-}
-
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
-    cout<<findComplement(5);
-}
+};
