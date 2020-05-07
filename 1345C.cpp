@@ -3,7 +3,7 @@
 using namespace std;
 
 #define ll long long
-#define inf (int)1e5
+#define inf (int)2e5
 
 void func(){
 	ll n ,a[inf], cap[inf]={0};
