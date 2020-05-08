@@ -3,7 +3,7 @@
 using namespace std;
 
 #define ll long long
-
+#define inf (ll)(1e6)+1
 int main(){
 	ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -11,14 +11,17 @@ int main(){
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 	#endif
-	int t, gray[130]={1};
-	for(int i=1; i<130; i++){
-		gray[i]=(gray[i-1])^(gray[i-1]>>1);
-		cout<<gray[i-1]<<" ";
+	ll k, sum[inf]={0}, ans=0, cnt=0;
+	string s;
+	cin>>k;
+	cin>>s;
+	sum[0]=1;
+	for(ll i=0; i<s.length(); i++){
+		cnt += s[i]-'0';
+		if(cnt >= k){
+			ans += sum[cnt-k];
+		}
+		sum[cnt]++;
 	}
-	// cin>>t;
-	// while(t--){
-	// 	ll n;
-	// 	cin 
-	// }
+	cout<<ans;
 }
